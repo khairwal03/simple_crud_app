@@ -1,0 +1,23 @@
+<h1>Trashed Items</h1>
+<%= link_to "Back to Active Items", items_path, class: "btn btn-secondary" %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.description %></td>
+        <td><%= button_to "Restore", restore_item_path(item), method: :patch, class: "btn btn-success" %></td>
+        <td><%= button_to "Hard Delete", item_path(item), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
