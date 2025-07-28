@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_07_25_061349) do
+ActiveRecord::Schema[7.1].define(version: 2025_07_25_103056) do
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "soft_deleted", default: false, null: false
+    t.index ["soft_deleted"], name: "index_items_on_soft_deleted"
   end
 
 end
